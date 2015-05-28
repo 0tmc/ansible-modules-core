@@ -155,7 +155,7 @@ class Subversion(object):
         '''True if revisioned files have been added or modified. Unrevisioned files are ignored.'''
         lines = self._exec(["status", "-q", self.dest])
         # Match only revisioned files, i.e. ignore status '?'.
-        regex = re.compile(r'^($|\?|Performing status)')
+        regex = re.compile(r'^($|\?|Performing status on external item)')
         # Has local mods if more than 0 modifed revisioned files.
         return len(filter(lambda e: not regex.match(e), lines)) > 0
 
